@@ -12,4 +12,4 @@ connection.connect(function(err) {
   console.log("Connected!");
 });
 
-export default connection;
+export default connection.promise();

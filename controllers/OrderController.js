@@ -1,4 +1,3 @@
-import db from "../config/db.js";
 import orderModel from '../model/OrderModel.js'
 import userModel from '../model/UserModel.js'
 

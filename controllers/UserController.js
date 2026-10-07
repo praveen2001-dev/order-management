@@ -8,10 +8,13 @@ const UserController = {
                 return resp.status(500).json({ message: "Name and email are required" });
             }
             const userData = { name: name, email: email };
-            console.log(userData);
+            const userExist = await userModel.findUserByEmail(userData.email);
+            if (userExist.length === 0) {
+                return resp.status(404).json({message: "User already found"});
+            }
+            
             const result = await userModel.createUser(userData);
-            console.log(result);
-            // return resp.status(201).json({message: "User created successfully", userId: result.insertId});
+            return resp.status(201).json({message: "User created successfully", userId: result.insertId});
         } catch (error) {
             return resp.status(500).json({message: error.message});
         }
