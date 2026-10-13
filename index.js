@@ -1,15 +1,16 @@
 import express from "express";
-import router from "./routes/index.js";
 import dotenv from "dotenv";
+import orderRouter from "./routes/order.js";
 import userRouter from "./routes/user.js";
 
+dotenv.config();
+
 const app = express();
+const port = process.env.PORT || 3000;
+
 app.use(express.json());
 
-dotenv.config();
-const port = process.env.PORT || 3200;
-
-app.use("/api", router);
+app.use("/api/orders", orderRouter);
 app.use("/api/users", userRouter);
 
 app.listen(port, () => {
