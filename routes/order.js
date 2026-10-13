@@ -1,12 +1,12 @@
-import express from 'express';
-import { createOrder, addItem, removeItem, getOrder, updateStatus } from "./controllers/UserController.js";
+import express from "express";
+import { createOrder, addItem, removeItem, getOrder, updateStatus} from "../controllers/OrderController.js";
 
-const router = express.Router();
+const orderRouter = express.Router();
 
-router.post('/', createOrder);
-// router.post("/:orderId/items", addItem);
-// router.delete("/:orderId/items/:productId", removeItem);
-// router.get("/:orderId", getOrder);
-// router.put("/:orderId/status", updateStatus);
+orderRouter.post("/", createOrder);
+orderRouter.post("/:orderId/items", addItem);
+orderRouter.delete("/:orderId/items/:productId", removeItem);
+orderRouter.get("/:orderId", getOrder);
+orderRouter.put("/:orderId/status", updateStatus);
 
-export default router;
+export default orderRouter;
